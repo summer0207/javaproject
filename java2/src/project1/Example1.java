@@ -37,7 +37,7 @@ class number implements radom{
 		while(w < 4) {
 		System.out.println("1~10까지 숫자를 입력하세요?");
 		int no = sc.nextInt();	
-		
+		sc.close();
 		if(no > 10) {
 			System.out.println("10이하 숫자만 입력하세요");
 			continue;

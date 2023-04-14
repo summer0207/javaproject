@@ -105,7 +105,7 @@ class ob_array{
 		catch(Exception e) {
 		System.out.println("총 상품은 개 이며, 총 금액은 원 입니다.");
 		}
-		
+		sc.close();
 	}
 	
 }
