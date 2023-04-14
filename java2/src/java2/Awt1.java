@@ -1,5 +1,5 @@
 package java2;
-
+/*
 import java.awt.Button;
 import java.awt.Checkbox;
 import java.awt.Color;
@@ -10,15 +10,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-
-public class Awt1 {
+*/
+/*
+public class Awt1 {*/
 	//java => awt, swing (GUI)
 	//awt 생성방식
 	/*
 	 Frame -> Panel -> Object(생성)
 	 적용방식 : Object -> Panel -> Frame(적용)
 	 */
-	
+/*	
 	public static void main(String[] args) {
 		Frame fr = new Frame();	//프레임 생성
 		closepm cp = new closepm();
@@ -29,7 +30,9 @@ public class Awt1 {
 		fr.addWindowListener(cp);	//창닫기
 		
 		Panel p = new Panel();	//패널 생성
+*/
 		/* 오브젝트 생성 */
+/*
 		Checkbox c1 = new Checkbox("Auto Login");
 		TextField id = new TextField(10);
 		Button btn = new Button("LOGIN");
@@ -65,8 +68,8 @@ public class Awt1 {
 		});
 	}
 }
-
-
+*/
+/*
 class closepm extends WindowAdapter{
 	@Override
 	public void windowClosing(WindowEvent e) {
@@ -75,3 +78,4 @@ class closepm extends WindowAdapter{
 		System.exit(0);
 	}
 }
+*/

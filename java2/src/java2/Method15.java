@@ -17,6 +17,7 @@ class color1{
 		return true;
 	}
 }
+/*
 class color2 extends color1{
 	public void zzz() {	//color2에서 생성된 메소드
 		
@@ -33,4 +34,5 @@ class color2 extends color1{
 		return super.zzz(nm);
 	}
 }
+*/
 
