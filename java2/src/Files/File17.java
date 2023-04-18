@@ -40,7 +40,7 @@ public class File17 {
 				is.close();
 		}
 		else {
-			System.out.println("이미지 제한 용량은 1MB 이하 까지 입니다.");
+			System.out.println("이미지 제한 용량은 1MB 이하 까지 입니다!");
 		}
 		}
 		catch (Exception e) {
