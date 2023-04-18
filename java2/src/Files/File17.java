@@ -22,8 +22,9 @@ public class File17 {
 		if(is.available() < 1048576) {
 			BufferedInputStream bs = new BufferedInputStream(is);
 			byte img[] = new byte[bs.available()]; 
+			int total = bs.read(img);
 			OutputStream os = new FileOutputStream("e:\\memo\\copy.jpg");
-			os.write(img,0,bs.available());
+			os.write(img,0,total);
 			System.out.println("이미지가 등록되었습니다.");
 				/*
 				int imgs = 0;
