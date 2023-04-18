@@ -1,5 +1,6 @@
 package Files;
 
+import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
@@ -15,29 +16,32 @@ public class File17 {
 
 	public static void main(String[] args) {
 		try {
-		//String file = "E:\\memo\\kk.jpg";	//1MB이하
-		String file = "E:\\memo\\kkk.jpg";	//사용자가 업로드할 이미지 파일 경로
+		String file = "E:\\memo\\kk.jpg";	//1MB이하
+		//String file = "E:\\memo\\kkk.jpg";	//사용자가 업로드할 이미지 파일 경로
 		InputStream is = new FileInputStream(file);
-		byte img[] = new byte[is.available()]; 
-		//System.out.println(is.available());
-		OutputStream os = new FileOutputStream("e:\\memo\\copy.jpg");
-		if(is.available() < 1000000) {
-			int imgs = 0;
-			while(true) {
-				imgs = is.read(img);
-			if(imgs == -1) {
-				break;
-			}
-			else {
-				os.write(img,0,imgs);
-			}
-		}
+		if(is.available() < 1048576) {
+			BufferedInputStream bs = new BufferedInputStream(is);
+			byte img[] = new byte[bs.available()]; 
+			OutputStream os = new FileOutputStream("e:\\memo\\copy.jpg");
+			os.write(img,0,bs.available());
+			System.out.println("이미지가 등록되었습니다.");
+				/*
+				int imgs = 0;
+				while(true) {
+					imgs = is.read(img);
+					if(imgs == -1) {
+						break;
+					}
+					else {
+						os.write(img,0,imgs);
+					}
+				}*/
+				os.close();
+				is.close();
 		}
 		else {
 			System.out.println("이미지 제한 용량은 1MB 이하 까지 입니다.");
 		}
-		os.close();
-		is.close();
 		}
 		catch (Exception e) {
 			System.out.println(e);
