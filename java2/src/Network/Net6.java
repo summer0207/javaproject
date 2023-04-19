@@ -9,14 +9,14 @@ public class Net6 {
 	
 	public static void main(String[] args) {
 		try {
-			System.out.println("Client 접속");
-			String ip = "192.168.10.142";
+			System.out.println("Client Connect");
+			String ip = "192.168.10.143";
 			int port = 9001;
 			Socket sk = new Socket(ip,port);
 			//System.out.println("서버에 연결 되었습니다. 클라이언트1");
 			
 			//Client에서 Server로 보내는 메세지
-			String cmsg = "안녕하세요!";
+			String cmsg = "Summer Hello :)";
 			
 			//Client에서 Server로 보내는 통로 byte로 전송
 			OutputStream os = sk.getOutputStream();
@@ -32,7 +32,7 @@ public class Net6 {
 			sk.close();
 			os.close();
 		} catch (Exception e) {
-			System.out.println("서버에 접근하지 못합니다.");
+			System.out.println("Error Server Connect :(");
 		}
 
 	}

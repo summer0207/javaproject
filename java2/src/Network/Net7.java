@@ -6,5 +6,4 @@ public class Net7 {
 		System.out.println("test java");
 
 	}
-
 }

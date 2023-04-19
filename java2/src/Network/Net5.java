@@ -16,13 +16,13 @@ public class Net5 {
 			try {
 				ServerSocket ss = new ServerSocket(port);	//오픈시킬 포트를 적용
 			while(true) {
-				System.out.println("연결 대기중...");	//accept : 클라이언트가 들어오는 것을 대기 하는 역할을 하게됨
+				System.out.println("Server Result...");	//accept : 클라이언트가 들어오는 것을 대기 하는 역할을 하게됨
 				//accept : 클라이언트가 들어오는 것을 대기하는 역할을 하게됨
 				Socket sc = ss.accept();//대기
 				
 				//client가 접속 했을 경우 해당 라인을 시작합니다.
 				//접속완료
-				System.out.println("호스트:통신 연결 성공");
+				System.out.println("host success!!");
 				
 				//Server에서 Client로 받는 통로
 				InputStream is = sc.getInputStream();
@@ -39,7 +39,7 @@ public class Net5 {
 				System.out.println(msgclient);
 				
 				//클라이언트로 메세지 전송
-				String aws = "반갑습니다.";		//서버에서 보내는 메세지
+				String aws = "Server~~ :D";		//서버에서 보내는 메세지
 				os.write(aws.getBytes());	//클라이언트로 보내기 위한 메모리 저장
 				
 				os.flush();
