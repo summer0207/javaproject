@@ -25,6 +25,7 @@ public class File17 {
 			int total = bs.read(img);
 			OutputStream os = new FileOutputStream("e:\\memo\\copy.jpg");
 			os.write(img,0,total);
+			os.close();
 			System.out.println("이미지가 등록되었습니다.");
 				/*
 				int imgs = 0;
