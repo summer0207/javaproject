@@ -33,7 +33,7 @@ class mchat{
 			this.so = new Socket(this.ip,this.port);
 			this.is = this.so.getInputStream();
 			this.os = this.so.getOutputStream();
-			this.msg = "WELCOME TO " + id;
+			this.msg = "WELCOME " + id;
 			this.os.write(this.msg.getBytes());
 			
 			this.sc = new Scanner(System.in);
