@@ -64,8 +64,6 @@ class chat_thread extends Thread{
 				int n = this.is.read(data);
 				this.msg = new String(data,0,n);
 				System.out.println(this.msg);
-				//this.sc = new Scanner(System.in);
-				//System.out.println("message: ");
 				String result = this.msg;
 				
 				/* 한명이 입력한 내용을 접속한 모든 사용자에게 메세지를 전달하기 위함 */
