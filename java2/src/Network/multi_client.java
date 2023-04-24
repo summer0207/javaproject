@@ -3,7 +3,7 @@ package Network;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.PrintStream;
+import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.Scanner;
 
@@ -20,21 +20,23 @@ public class multi_client {
 		InputStreamReader isr = null;
 		Scanner sc = null;
 		try {
+			//서버 접속 ip 및 포트 설정
 			sk = new Socket("192.168.10.142",10001);
 			System.out.println("Connect Success");
 			sc = new Scanner(System.in);
-			System.out.println("user id: ");
+			System.out.println("user id: ");	//사용자 아이디
 			String name = sc.next();
+			//멀티 스레드로 사용자 아이디 및 소켓 전달
 			Thread tr = new ch_client(sk, name);
-			tr.start();
+			tr.start();	//멀티 스레드 가동
 			
-			is = sk.getInputStream();
-			isr = new InputStreamReader(is);
-			br = new BufferedReader(isr);
+			is = sk.getInputStream();	//읽기
+			isr = new InputStreamReader(is);	//byte -> String
+			br = new BufferedReader(isr);	//메모리에 저장
 			
 			while(br != null) {
-				String msg = br.readLine();
-				System.out.println("MSG:"+ msg);
+				String msg = br.readLine();	//메모리 문자 확인
+				System.out.println(msg);	//메세지 전달
 			}
 		} 
 		catch (Exception e) {
@@ -47,6 +49,8 @@ class ch_client extends Thread{
 	Socket sk = null;
 	String name = null;
 	Scanner sc = null;
+	
+	//소켓이랑 아이디 값을 기본설정으로 등록
 	public ch_client(Socket s, String name) {	//setter
 		this.sk = s;
 		this.name = name;
@@ -55,15 +59,22 @@ class ch_client extends Thread{
 	@Override
 	public void run() {
 		try {
-			PrintStream ps = new PrintStream(this.sk.getOutputStream());
-			ps.println(this.name);
+			//byte -> String으로 변환
+			PrintWriter ps = new PrintWriter(this.sk.getOutputStream());
+			ps.println(this.name);	//입장시 1회만 사용
 			ps.flush();
 			
-			while(true) {
+			while(true) {	//사용자가 입력하는 메세지를 전달
 				this.sc = new Scanner(System.in);
 				String msg = this.sc.nextLine();
-				ps.println(msg);
-				ps.flush();
+				ps.println(msg);	//전달 메세지 출력
+				ps.flush();	//메세지 초기화
+				if(msg.equals("exit")) {
+					System.out.println("chatting end...");
+					System.exit(0);	//프로세서 종료
+					this.sc.close();
+					break;
+				}
 			}
 		} 
 		catch (Exception e) {
